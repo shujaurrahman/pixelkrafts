@@ -32,6 +32,10 @@ export default function Home() {
 
           <IntroSection />
 
+          {/*//! START OurWork */}
+          <OurWorkSection />
+          {/*//? END OurWork */}
+
           <ServicesSection />
 
           {/*//! START Why ChooseUs */}
@@ -41,10 +45,6 @@ export default function Home() {
           {/*//! START Process */}
           <ProcessSection />
           {/*//? END Process */}
-
-          {/*//! START OurWork */}
-          <OurWorkSection />
-          {/*//? END OurWork */}
 
           {/*//! START Testimonial */}
           <TestimonialSection />

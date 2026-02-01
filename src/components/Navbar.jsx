@@ -31,7 +31,7 @@ const Navbar = () => {
                     <Link href="/contact">
                         <button className="bg-gradient-to-br from-c-blue-1 to-[#480090] p-0.5 rounded-full">
                             <div className="bg-c-black-1 py-3 px-6 rounded-full text-white text-sm hover:bg-transparent transition-all">
-                                <span>Get a Free Quote</span> <CircleArrowIcon className="ml-2 inline" />
+                                <span>Get Free Quote</span> <CircleArrowIcon className="ml-2 inline" />
                             </div>
                         </button>
                     </Link>
