@@ -8,6 +8,7 @@ import IntroSection from "@/components/IntroSection";
 import LetsWorkSection from "@/components/LetsWorkSection";
 import Navbar from "@/components/Navbar";
 import OurWorkSection from "@/components/OurWorkSection";
+import ProcessSection from "@/components/ProcessSection";
 import ServicesSection from "@/components/ServicesSection";
 import TestimonialSection from "@/components/TestimonialSection";
 
@@ -36,6 +37,10 @@ export default function Home() {
           {/*//! START Why ChooseUs */}
           <ChooseSection />
           {/*//? END Why ChooseUs */}
+
+          {/*//! START Process */}
+          <ProcessSection />
+          {/*//? END Process */}
 
           {/*//! START OurWork */}
           <OurWorkSection />

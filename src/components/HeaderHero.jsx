@@ -1,7 +1,21 @@
+"use client";
+import Link from "next/link";
+import { useState, useEffect } from "react";
 import { CircleArrowIcon, ScrollTriggerIcon } from "@/assets/Icons";
 import HeroSocial from "./HeroSocial";
+import { getSiteSettings } from "../../lib/sanity.client";
 
 const HeaderHero = () => {
+    const [settings, setSettings] = useState(null);
+
+    useEffect(() => {
+        const fetchSettings = async () => {
+            const data = await getSiteSettings();
+            setSettings(data);
+        };
+        fetchSettings();
+    }, []);
+
     return (
         <section className="w-full h-screen overflow-hidden relative">
 
@@ -26,33 +40,39 @@ const HeaderHero = () => {
                 <div className="container">
 
                     <HeroSocial />
+                    
+                    <p className="text-center text-white/60 text-sm md:text-base tracking-widest uppercase md:mt-4 mt-2">
+                        {settings?.heroSection?.tagline || 'Create. Craft. Conquer.'}
+                    </p>
+
                     <h2
-                        className="md:mt-9 mt-5 leading-[7rem] text-8xl lg:text-[5.4rem] md:text-[4.8rem] md:leading-[5.9rem] max-md:text-[2.7rem] 
-                        max-md:leading-[3.45rem] text-center text-transparent bg-clip-text bg-gradient-to-r from-c-purple-2 from-20% via-white
-                         to-c-purple-3 to-80%"
+                        className="md:mt-4 mt-3 leading-[1.1] text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] 
+                        text-center text-transparent bg-clip-text bg-gradient-to-r from-c-purple-2 from-20% via-white to-c-purple-3 to-80%"
                     >
-                        Amazing website creation with Digitex
+                        {settings?.heroSection?.headline || 'Amazing Website Creation'}
                     </h2>
 
                     <p
-                        className="text-center lg:text-super-base md:text-base text-super-xs leading-6 text-white/85 md:mt-7 mt-3.5 md:font-light font-extralight tracking-wide"
+                        className="text-center lg:text-xl md:text-lg text-base leading-7 text-white/85 md:mt-8 mt-5 md:font-light font-extralight tracking-wide max-w-3xl mx-auto"
                     >
-                        help you to build website company that is modern, user friendly, good CEO, and Clean design
+                        {settings?.heroSection?.subheadline || 'Turn your ideas into digital reality. We help you build modern, user-friendly websites with clean design that drives growth.'}
                     </p>
 
-                    <button
-                        className="focus:outline-none bg-white text-black md:text-base text-sm rounded-full font-medium px-8 md:py-3 py-2.5 md:mt-10 mt-9 mx-auto block"
-                    >
-                        Get Started
-                        <CircleArrowIcon className="md:ml-2.5 ml-2 inline md:w-7 md:h-7 fill-white" fillColor="black" strokeColor="black" />
-                    </button>
+                    <Link href="/contact">
+                        <button
+                            className="focus:outline-none bg-white text-c-purple-1 md:text-base text-sm rounded-full font-semibold px-10 md:py-4 py-3 md:mt-10 mt-8 mx-auto block hover:bg-c-purple-1 hover:text-white hover:shadow-xl hover:shadow-c-purple-1/40 transition-all duration-300"
+                        >
+                            {settings?.heroSection?.ctaText || 'Get Free Quote'}
+                            <CircleArrowIcon className="md:ml-3 ml-2 inline md:w-7 md:h-7 w-6 h-6" />
+                        </button>
+                    </Link>
 
                     <div
-                        className="flex flex-col items-center mt-20 absolute bottom-4 left-[50%] translate-x-[-50%]"
+                        className="flex flex-col items-center mt-20 absolute bottom-6 left-[50%] translate-x-[-50%]"
                     >
                         <ScrollTriggerIcon className="w-4 h-6 animate-bounce" />
-                        <span className="text-white/85 font-light md:text-super-xs text-xs tracking-wide mt-1.5">
-                            Scroll down for work Together
+                        <span className="text-white/70 font-light text-xs tracking-wide mt-2">
+                            Scroll to explore
                         </span>
                     </div>
 

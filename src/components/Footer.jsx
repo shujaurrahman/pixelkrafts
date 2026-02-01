@@ -1,8 +1,27 @@
-import { InstagramIcon, LinkedInIcon, TwitterIcon, WhatsAppIcon } from "@/assets/Icons";
+"use client"
+import { InstagramIcon, LinkedInIcon, WhatsAppIcon } from "@/assets/Icons";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { getSiteSettings, urlFor } from "../../lib/sanity.client";
 
 const Footer = () => {
+    const [settings, setSettings] = useState(null);
+
+    useEffect(() => {
+        async function fetchSettings() {
+            try {
+                const data = await getSiteSettings();
+                setSettings(data);
+            } catch (error) {
+                console.error('Error fetching site settings:', error);
+            }
+        }
+        fetchSettings();
+    }, []);
+
+    const socialLinks = settings?.socialLinks || {};
+
     return (
         <footer className="w-full pb-10 bg-c-black-1/20 border-t-2 border-c-purple-1/20">
             <div className="container h-full w-full">
@@ -13,56 +32,69 @@ const Footer = () => {
 
                     <div className="lg:col-span-4 col-span-full">
 
-                        <div className="flex items-center gap-4 mb-7">
-                            <Image src="/images/logo.png" width={64} height={55} className="md:w-16 w-14" alt="logo" />
-                            <h3 className="text-white md:text-2xl text-1.5xl font-medium tracking-wide">Digitex</h3>
+                        <div className="mb-7">
+                            {settings?.logo ? (
+                                <Image 
+                                    src={urlFor(settings.logo).width(160).height(140).url()} 
+                                    width={160} 
+                                    height={140} 
+                                    className="md:w-40 w-32" 
+                                    alt={settings?.companyName || "Company logo"} 
+                                />
+                            ) : (
+                                <Image src="/images/logopk.png" width={160} height={140} className="md:w-40 w-32" alt="PixelKrafts logo" />
+                            )}
                         </div>
 
                         <p className="text-white/85 xl:text-super-sm text-sm font-extralight tracking-wide leading-6">
-                            Your trusted partner in web development, design, and SEO. Together, we create digital experiences that make a lasting impact.
+                            {settings?.description || "Your trusted partner in web development, app development, SEO, and custom AI solutions. Together, we create digital experiences that make a lasting impact."}
                         </p>
 
                     </div>
 
                     <div className="lg:col-span-8 col-span-full flex flex-wrap justify-between xl:gap-6 gap-x-14 gap-y-6">
-                        <div className="pt-3 flex-1">
+                        <div className="pt-3 flex-1 min-w-[200px]">
 
                             <h5 className="text-white text-xl font-medium tracking-wide mb-5">Quick Links</h5>
 
                             <ul
                                 className="text-white/85 text-super-sm font-extralight tracking-wide pl-1 flex flex-col gap-3"
                             >
-                                <Link href="/"><li>Home</li></Link>
-                                <Link href="/"><li>About Us</li></Link>
-                                <Link href="/"><li>Services</li></Link>
-                                <Link href="/"><li>Portfolio</li></Link>
-                                <Link href="/"><li>Contact</li></Link>
+                                <Link href="/"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Home</li></Link>
+                                <Link href="/about"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">About Us</li></Link>
+                                <Link href="/services"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Our Services</li></Link>
+                                <Link href="/portfolio"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Our Portfolio</li></Link>
+                                <Link href="/careers"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Our Careers</li></Link>
+                                <Link href="/blogs"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Our Blogs</li></Link>
+                                <Link href="/contact"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Contact Us</li></Link>
                             </ul>
                         </div>
 
-                        <div className="pt-3 flex-1">
+                        <div className="pt-3 flex-1 min-w-[200px]">
 
-                            <h5 className="text-white text-xl font-medium tracking-wide mb-5">Services</h5>
+                            <h5 className="text-white text-xl font-medium tracking-wide mb-5">Useful Links</h5>
 
                             <ul className="text-white/85 text-super-sm font-extralight tracking-wide pl-1 flex flex-col gap-3">
-                                <li>Web Development</li>
-                                <li>Mobile Development</li>
-                                <li>SEO Services</li>
-                                <li>UI/UX Design</li>
+                                <Link href="/terms"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Terms & Conditions</li></Link>
+                                <Link href="/privacy"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Privacy Policies</li></Link>
+                                <Link href="/refund"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Refund Policies</li></Link>
+                                <Link href="/security"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Security Policies</li></Link>
+                                <Link href="/nda"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">NDA Policies</li></Link>
                             </ul>
 
                         </div>
 
-                        <div className="pt-3 flex-1">
+                        <div className="pt-3 flex-1 min-w-[200px]">
 
-                            <h5 className="text-white text-xl font-medium tracking-wide mb-5">Contact</h5>
+                            <h5 className="text-white text-xl font-medium tracking-wide mb-5">Contact Us</h5>
 
                             <ul
                                 className="text-white/85 text-super-sm font-extralight tracking-wide pl-1 flex flex-col gap-3"
                             >
-                                <li>Address: 1234 Street Name, City Name, United States</li>
-                                <li>Phone: +123 456 7890</li>
-                                <li>Email: example@gmail.com</li>
+                                <li style={{whiteSpace: 'pre-line'}}>{settings?.address || "Pilibhit 262001\nUttar Pradesh, India"}</li>
+                                <li>{settings?.workingHours || "Mon - Sat: 10:00 AM - 06:00 PM"}</li>
+                                <li>Phone: {settings?.phone || "+91 7579966178"}</li>
+                                <li>Email: {settings?.email || "official@pixelkrafts.in"}</li>
                             </ul>
 
                         </div>
@@ -76,20 +108,25 @@ const Footer = () => {
                 >
 
                     <div>
-                        <p>@{new Date().getFullYear()} Digitex. All Rights Reserved.</p>
+                        <p>@{new Date().getFullYear()} {settings?.copyrightText || `${settings?.companyName || 'PixelKrafts Software Solutions'}. All Rights Reserved.`}</p>
                     </div>
 
-                    <ul className="flex gap-7font-light">
-                        <li>Privacy Policy</li>
-                        <li>Terms of Service</li>
-                        <li>Cookie Policy</li>
-                    </ul>
-
                     <div className="flex items-center gap-4">
-                        <button className="focus:outline-none"><InstagramIcon /></button>
-                        <button className="focus:outline-none"><WhatsAppIcon /></button>
-                        <button className="focus:outline-none"><LinkedInIcon /></button>
-                        <button className="focus:outline-none"><TwitterIcon /></button>
+                        {(socialLinks.instagram || !settings) && (
+                            <a href={socialLinks.instagram || "https://www.instagram.com/pixelkrafts_in/"} target="_blank" rel="noopener noreferrer" className="focus:outline-none hover:scale-110 transition-transform">
+                                <InstagramIcon />
+                            </a>
+                        )}
+                        {(socialLinks.whatsapp || !settings) && (
+                            <a href={`https://wa.me/${socialLinks.whatsapp || "917579966178"}`} target="_blank" rel="noopener noreferrer" className="focus:outline-none hover:scale-110 transition-transform">
+                                <WhatsAppIcon />
+                            </a>
+                        )}
+                        {(socialLinks.linkedin || !settings) && (
+                            <a href={socialLinks.linkedin || "https://www.linkedin.com/company/pixelkraftssoftwaresolution"} target="_blank" rel="noopener noreferrer" className="focus:outline-none hover:scale-110 transition-transform">
+                                <LinkedInIcon />
+                            </a>
+                        )}
                     </div>
 
                 </div>

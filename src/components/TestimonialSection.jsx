@@ -1,9 +1,36 @@
+"use client"
 import { SpeechBubbleIcon } from "@/assets/Icons";
 import SectionLayout from "./SectionLayout";
-import { TestimonialVariant } from "@/constant/TestimonialVariant";
 import TestimonialItem from "./TestimonialItem";
+import { useEffect, useState } from "react";
+import { getAllTestimonials, urlFor } from "../../lib/sanity.client";
 
 const TestimonialSection = () => {
+    const [testimonials, setTestimonials] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function fetchTestimonials() {
+            try {
+                const data = await getAllTestimonials();
+                if (data && data.length > 0) {
+                    const transformed = data.map(item => ({
+                        fullName: item.fullName,
+                        position: item.position,
+                        comment: item.comment,
+                        image: item.image ? urlFor(item.image).width(96).height(96).url() : "/images/profile-1.png"
+                    }));
+                    setTestimonials(transformed);
+                }
+            } catch (error) {
+                console.error('Error fetching testimonials:', error);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchTestimonials();
+    }, []);
+
     return (
         <SectionLayout
             icon={<SpeechBubbleIcon className="fill-c-purple-1 md:w-8 md:h-8 w-7 h-7" />}
@@ -24,12 +51,12 @@ const TestimonialSection = () => {
                         className="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]"
                     >
                         <ul className="flex items-center justify-center md:justify-start xl:[&_li]:mx-8 [&_li]:mx-5 [&_img]:max-w-none animate-infinite-scroll">
-                            {TestimonialVariant.map((item, index) => (
+                            {testimonials.map((item, index) => (
                                 <TestimonialItem key={index} {...item} />
                             ))}
                         </ul>
                         <ul className="flex items-center justify-center md:justify-start xl:[&_li]:mx-8 [&_li]:mx-5 [&_img]:max-w-none animate-infinite-scroll" aria-hidden="true">
-                            {TestimonialVariant.map((item, index) => (
+                            {testimonials.map((item, index) => (
                                 <TestimonialItem key={index} {...item} />
                             ))}
                         </ul>

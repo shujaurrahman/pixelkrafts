@@ -2,33 +2,33 @@ import { CursorIcon, GridPlusIcon, LightBulbIcon, MobileIcon, StarsIcon, Thunder
 
 export const ChooseUsVariant = [
     {
-        title: "Expertise That Drives Results",
-        description: "Our team of seasoned professionals brings years of experience and expertise to the table.",
-        icon: StarsIcon
-    },
-    {
-        title: "Tailored Business Solutions",
-        description: "We understand that every business is unique. That's why our solutions are customized.",
-        icon: LightBulbIcon
-    },
-    {
-        title: "Cutting-Edge Web Design",
-        description: "Leave a lasting impression on your audience with our top-notch web design services.",
-        icon: CursorIcon
-    },
-    {
-        title: "Mobile-First Approach",
-        description: "In today's mobile-centric world, we prioritize mobile-first design to ensure your website.",
-        icon: MobileIcon
-    },
-    {
-        title: "Marketing Strategies",
-        description: "Our data-driven marketing strategies allow us to target the right audience with precision",
+        title: "Smarter, Faster Productivity",
+        description: "We build systems that automate workflows, reduce manual effort, and help your team work with maximum efficiency.",
         icon: ThunderLightningIcon
     },
     {
-        title: "Search Engine Optimization",
-        description: "(SEO) Mastery Boost your online visibility with our expert SEO techniques.",
+        title: "Customer-First Digital Experiences",
+        description: "Clean, intuitive designs that improve conversions, build trust, and keep users engaged longer.",
+        icon: CursorIcon
+    },
+    {
+        title: "Always-On Performance",
+        description: "Your website or system stays fast, stable, and available 24/7 — no technical bottlenecks, no downtime.",
+        icon: MobileIcon
+    },
+    {
+        title: "Lower Operational Costs",
+        description: "Thoughtful engineering and automation reduce running costs, prevent errors, and eliminate unnecessary workload.",
+        icon: LightBulbIcon
+    },
+    {
+        title: "Meaningful Data Insights",
+        description: "We integrate smart analytics and AI-driven tools so you can make quick, informed business decisions every day.",
         icon: GridPlusIcon
+    },
+    {
+        title: "Systems That Scale With You",
+        description: "Whether you're a startup or an established business, our solutions expand smoothly as your needs grow without complexity.",
+        icon: StarsIcon
     },
 ]

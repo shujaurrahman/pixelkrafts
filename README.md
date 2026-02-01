@@ -1,98 +1,149 @@
-![react project](https://github.com/amirrezaRst/digitex-agency/blob/master/public/github/project-thumbnail.jpg?raw=true)
-# **<img src="https://github.com/amirrezaRst/digitex-agency/blob/master/public/images/logo.png?raw=true" alt="description" width="58" height="42"> Digitex - Software Development Agency**
-### Under Ongoing Development
+# PixelKrafts Website
 
-## **Table of Contents**
-1. [Overview](#overview)
-2. [Features](#features)
-3. [Tech Stack](#tech-stack)
-4. [Installation](#installation)
-5. [Live Demo](#live-demo)
-6. [Contact](#contact)
+A modern, SEO-optimized full-stack website for PixelKrafts Software Solutions.
 
----
+## 🚀 Features
 
-## **Overview** <a name="overview"></a>
+- **Multi-page Architecture**: Home, About, Services, Portfolio, Blogs, Contact, Careers
+- **9 Core Services**: 
+  - Website Development
+  - App Development
+  - SEO Services
+  - Social Media Ads
+  - Digital Marketing
+  - Chatbot Development
+  - AI Models Development
+  - UI/UX Designing
+  - APIs Development
+- **Development Process Section**: 4-step process visualization
+- **Interactive FAQ**: Accordion-style with smooth animations
+- **SEO Optimized**: Meta tags, keywords, structured data
+- **Responsive Design**: Mobile-first approach
+- **Policy Pages**: Terms, Privacy, Refund, Security, NDA
+- **Contact Form**: Get free quotes
+- **Social Media Integration**: Instagram, WhatsApp, LinkedIn
 
-**Digitex** is a showcase project designed to highlight expertise in modern web technologies. Built with Next.js, React.js, and Tailwind CSS, this project demonstrates a comprehensive approach to developing high-performance, scalable, and visually appealing web applications.
+## 📦 Tech Stack
 
-### **Key Highlights of the Project:**
+- **Framework**: Next.js 14 (App Router)
+- **Styling**: Tailwind CSS
+- **Icons**: Custom SVG components
+- **Blog CMS**: Sanity (to be integrated)
 
-- **Modern Tech Stack:** Utilizes Next.js for server-side rendering and static site generation, React.js for building dynamic user interfaces, and Tailwind CSS for creating modern, responsive designs.
-
-- **Performance and Scalability:** Optimized for fast loading times and smooth interactions, demonstrating best practices for performance optimization and scalable architecture.
-
-- **Responsive Design:** Tailwind CSS ensures the application is fully responsive, providing an excellent user experience across various devices and screen sizes.
-
-- **Best Practices Showcase:** Displays modern web development best practices, including clean code, modular design, and efficient state management, serving as a reference for high-quality development standards.
-
-- **Custom Features:** Includes custom components and features that illustrate the ability to create tailored solutions and enhance user interactions.
-
-This project not only serves as a portfolio piece but also as a practical demonstration of proficiency in recent web technologies, reflecting a commitment to building robust and innovative web applications that meet the needs of modern digital solutions.
-
----
-
-## **Features** <a name="features"></a>
-
-- ✅ **Custom Web Application Development**: Utilizing Next.js and React to build sophisticated and responsive web applications tailored to specific business requirements.
-- 🚀 **High-Performance and Scalable Solutions**: Implementing modern technologies to ensure high speed and scalability, optimizing user experience.
-- 🔒 **Security-Focused Design and Development**: Applying best practices and security techniques to protect data and prevent security threats.
-- 🎨 **Modern, Responsive Design**: Leveraging Tailwind CSS to create beautiful, modern designs compatible with various devices and screen sizes.
-- 🛠️ **Full-Stack Technology with Server-Side Rendering and Static Site Generation**: Utilizing server-side rendering and static site generation to enhance page loading speed and SEO.
-
----
-## **Tech Stack** <a name="tech-stack"></a>
-
-<p style="display: flex; justify-content: center; gap: 20px;">
-  <img src="https://github.com/amirrezaRst/digitex-agency/blob/master/public/github/nextjs-logo3.png?raw=true" alt="Next.js" width="55" style="margin: 0 20px;">
-  <img src="https://github.com/amirrezaRst/digitex-agency/blob/master/public/github/reactjs-logo3.png?raw=true" alt="React" width="55" style="margin: 0 20px;">
-  <img src="https://github.com/amirrezaRst/digitex-agency/blob/master/public/github/tailwind-logo3.png?raw=true" alt="Tailwind CSS" width="55" style="margin: 0 20px;">
-</p>
-
----
-## **Installation** <a name="installation"></a>
-
-To get a local copy of the project up and running, follow these steps:
-
-**1. Clone the Repository**
+## 🛠️ Installation
 
 ```bash
-git clone https://github.com/your-username/digitex.git
-```
-Navigate into the project directory:
-```
-cd digitex
-```
-
-**2. Install Dependencies**
-```
+# Install dependencies
 npm install
-```
 
-**3. Run the Development Server**
-```
+# Run development server
 npm run dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
 ```
-The application should now be running at http://localhost:3000.
 
+## 🔧 Sanity CMS Setup (For Blogs)
 
-## **Live Demo** <a name="live-demo"></a>
+### Step 1: Create Sanity Project
+```bash
+npm install -g @sanity/cli
+sanity init
+```
 
-![Website Screenshot](https://github.com/amirrezaRst/digitex-agency/blob/master/public/github/digitex-project-desktop.png?raw=true)
+Use these details:
+- Project ID: `a0r2v2xb`
+- Organization ID: `oZHyWbfxS`
+- Dataset: `production`
 
-🔗 [Check out the live demo here!](https://digitex.liara.run/)
+### Step 2: Create Environment Variables
+Create `.env.local` in the root:
+```
+NEXT_PUBLIC_SANITY_PROJECT_ID=a0r2v2xb
+NEXT_PUBLIC_SANITY_DATASET=production
+NEXT_PUBLIC_SANITY_API_VERSION=2024-01-01
+SANITY_API_TOKEN=skN9icNuWu1AEYdCRRd8muncb8fan1MyoK9ICdrvGZ3PRfqtMn6BdEvhO8BPaHmiEPNtDwSN8BLIeN1p0zTsjzHs0gkm7QysJLsNqsDdiPixY6LETDtiClHWn1BgnWL8lVyLRnlGr56A6yj8ahth2rOo1vnfNA0sWEn4XmdDKDmGhgNsV3YE
+```
 
+### Step 3: Install Sanity Dependencies
+```bash
+npm install @sanity/client @sanity/image-url next-sanity
+```
 
-## **Contact**
+### Step 4: Create Sanity Schema
+Create `sanity/schemas/blog.js`:
+```javascript
+export default {
+  name: 'blog',
+  title: 'Blog Posts',
+  type: 'document',
+  fields: [
+    {
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+      validation: Rule => Rule.required()
+    },
+    {
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
+      validation: Rule => Rule.required()
+    },
+    {
+      name: 'author',
+      title: 'Author',
+      type: 'string',
+    },
+    {
+      name: 'mainImage',
+      title: 'Main image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: 'excerpt',
+      title: 'Excerpt',
+      type: 'text',
+      rows: 3
+    },
+    {
+      name: 'body',
+      title: 'Body',
+      type: 'array',
+      of: [{type: 'block'}]
+    },
+    {
+      name: 'publishedAt',
+      title: 'Published at',
+      type: 'datetime',
+    },
+  ],
+}
+```
 
-If you're looking for collaboration on web or app development projects, or if you're in need of professional software development services, we’d be happy to connect. We are open to working with clients and other developers to deliver high-quality, successful projects.
+## 📧 Contact Information
 
-- 📧 Email: [amirreza.rostami.0073@gmail.com](mailto:amirreza.rostami.0073@gmail.com)
-- 🌐 Website: [https://amirrezarostami.ir](https://amirrezarostami.ir)
-- 💼 LinkedIn: [LinkedIn Profile Address](https://www.linkedin.com/in/amirreza-rostami-2861b7265/)
-- 🌐 Telegram: [Telegram Address](https://web.telegram.org/a/#478283953)
+- **Address**: Pilibhit 262001, Uttar Pradesh, India
+- **Phone**: +91 7579966178
+- **Email**: official@pixelkrafts.in
+- **Working Hours**: Mon - Sat: 10:00 AM - 06:00 PM
 
-Feel free to get in touch via email or social media if you're interested in working together.
+## 🔗 Social Media
 
+- Instagram: [@pixelkrafts_in](https://www.instagram.com/pixelkrafts_in/)
+- LinkedIn: [PixelKrafts Software Solutions](https://www.linkedin.com/company/pixelkraftssoftwaresolution)
+- WhatsApp: [Chat with us](https://wa.me/917579966178)
 
-# pixelkrafts
+## 📄 License
+
+© 2026 PixelKrafts Software Solutions. All Rights Reserved.

@@ -11,7 +11,7 @@ const MobileMenu = ({ isOpen, setIsOpen }) => {
             <div className="container py-6">
 
                 <div className="flex items-center justify-between mb-12">
-                    <Image width={64} height={55} src="/images/logo.png" alt="digitex logo" className="w-14" />
+                    <Image width={80} height={70} src="/images/logopk.png" alt="PixelKrafts logo" className="w-16" />
 
                     <button className="focus:outline-none" onClick={() => setIsOpen(!isOpen)}>
                         <XmarkIcon className="stroke-white w-7 h-7" />
@@ -19,11 +19,12 @@ const MobileMenu = ({ isOpen, setIsOpen }) => {
                 </div>
 
                 <ul className="flex flex-col gap-5 text-white/85 tracking-wider px-3">
-                    <li><Link href="/about-us">About</Link></li>
-                    <li><Link href="/services">Services</Link></li>
-                    <li><Link href="/portfolio">Portfolio</Link></li>
-                    <li><Link href="/blogs">Blogs</Link></li>
-                    <li><Link href="/contact-us">Contact Us</Link></li>
+                    <li><Link href="/" onClick={() => setIsOpen(false)}>Home</Link></li>
+                    <li><Link href="/about" onClick={() => setIsOpen(false)}>About</Link></li>
+                    <li><Link href="/services" onClick={() => setIsOpen(false)}>Services</Link></li>
+                    <li><Link href="/portfolio" onClick={() => setIsOpen(false)}>Portfolio</Link></li>
+                    <li><Link href="/blogs" onClick={() => setIsOpen(false)}>Blogs</Link></li>
+                    <li><Link href="/contact" onClick={() => setIsOpen(false)}>Contact Us</Link></li>
                 </ul>
 
             </div>

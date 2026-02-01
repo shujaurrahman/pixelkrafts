@@ -1,9 +1,46 @@
+"use client"
 import { CircleArrowIcon, GlobalToolsIcon } from "@/assets/Icons";
 import SectionLayout from "./SectionLayout";
-import { PortfolioVariant } from "@/constant/PortfolioVariant";
 import PortfolioCard from "./PortfolioCard";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { getFeaturedPortfolio, urlFor } from "../../lib/sanity.client";
 
 const OurWorkSection = () => {
+    const [portfolioItems, setPortfolioItems] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function fetchPortfolio() {
+            try {
+                const data = await getFeaturedPortfolio();
+                if (data && data.length > 0) {
+                    // Transform Sanity data to match card format
+                    const transformed = data.map(item => ({
+                        category: item.category === 'website' ? 'Website Development' : 
+                                  item.category === 'ecommerce' ? 'E-Commerce' :
+                                  item.category === 'app' ? 'App Development' :
+                                  item.category === 'fullstack' ? 'Full Stack' :
+                                  item.category === 'ai' ? 'AI Solution' : 'Development Project',
+                        title: item.title,
+                        description: item.description,
+                        image: item.mainImage ? urlFor(item.mainImage).width(400).height(250).url() : "/images/project1.png",
+                        tags: item.technologies || [],
+                        path: item.slug?.current || item._id
+                    }));
+                    setPortfolioItems(transformed);
+                }
+            } catch (error) {
+                console.error('Error fetching portfolio:', error);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchPortfolio();
+    }, []);
+
+    const displayItems = portfolioItems;
+
     return (
         <SectionLayout
             icon={<GlobalToolsIcon className="stroke-[#ac8ef2] md:w-8 md:h-8 w-7 h-7" />}
@@ -26,23 +63,29 @@ const OurWorkSection = () => {
                             From concept to completion, our projects reflect the expertise and creativity of our team. Each project is a testament
                             to our commitment to delivering innovative solutions tailored to meet the unique needs of our clients.
                         </p>
-                        <button
-                            className="focus:outline-none bg-white text-black rounded-full font-medium px-6 xl:py-3 md:py-2.5 py-2 md:text-super-sm text-super-xs"
-                        >
-                            All Portfolio
-                            <CircleArrowIcon className="ml-1.5 inline xl:w-6 xl:h-6 max-md:w-5 h-5 fill-white" fillColor="black" strokeColor="black" />
-                        </button>
+                        <Link href="/portfolio">
+                            <button
+                                className="focus:outline-none bg-white text-black rounded-full font-medium px-6 xl:py-3 md:py-2.5 py-2 md:text-super-sm text-super-xs"
+                            >
+                                All Portfolio
+                                <CircleArrowIcon className="ml-1.5 inline xl:w-6 xl:h-6 max-md:w-5 h-5 fill-white" fillColor="black" strokeColor="black" />
+                            </button>
+                        </Link>
                     </div>
 
                     <div
                         className={`grid 2xl:grid-cols-2 gap-x-10 2xl:gap-y-12 gap-16 mt-16 transition-all duration-850
                          ${inView ? "translate-y-0 opacity-100" : "translate-y-40 opacity-0"}`}
                     >
-
-                        {PortfolioVariant.map((item, index) => (
-                            <PortfolioCard key={index} {...item} />
-                        ))}
-
+                        {loading ? (
+                            <div className="col-span-2 flex justify-center py-20">
+                                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-c-purple-1"></div>
+                            </div>
+                        ) : (
+                            displayItems.map((item, index) => (
+                                <PortfolioCard key={index} {...item} />
+                            ))
+                        )}
                     </div>
 
                 </div>

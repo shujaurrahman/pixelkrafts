@@ -5,13 +5,17 @@ const inter = Inter({ subsets: ['latin'] });
 
 
 
-const appName = "Digitex - Expert Web Development Agency";
-const appDesc = "Digitex offers professional web development, digital solutions, and programming services to help your business thrive online. From custom websites to cutting-edge applications, we've got you covered";
+const appName = "PixelKrafts - Software Solutions & Digital Services";
+const appDesc = "PixelKrafts offers professional web development, app development, SEO, digital marketing, and custom AI solutions to help your business thrive online. Beautifully designed, expertly developed solutions that scale with you.";
 
 export const metadata = {
   title: appName,
   description: appDesc,
-  url: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
+  keywords: "web development, app development, SEO services, digital marketing, social media ads, chatbot development, AI development, UI/UX design, API development, software solutions",
+  authors: [{ name: "PixelKrafts Software Solutions" }],
+  creator: "PixelKrafts",
+  publisher: "PixelKrafts Software Solutions",
+  url: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://pixelkrafts.in'}/`,
   alternate: {
     canonical: "/",
   },

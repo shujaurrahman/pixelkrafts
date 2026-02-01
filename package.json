@@ -1,5 +1,5 @@
 {
-  "name": "digitex",
+  "name": "pixelkrafts",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,9 +10,16 @@
   },
   "dependencies": {
     "@liara/cli": "^7.0.7",
+    "@portabletext/react": "^6.0.2",
+    "@sanity/client": "^7.14.1",
+    "@sanity/image-url": "^2.0.3",
+    "@sanity/vision": "^5.7.0",
     "next": "14.2.8",
+    "next-sanity": "^7.1.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "sanity": "^3.99.0",
+    "styled-components": "^6.3.8"
   },
   "devDependencies": {
     "eslint": "^8",
