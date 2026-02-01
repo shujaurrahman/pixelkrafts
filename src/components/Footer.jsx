@@ -60,11 +60,9 @@ const Footer = () => {
                             <ul
                                 className="text-white/85 text-super-sm font-extralight tracking-wide pl-1 flex flex-col gap-3"
                             >
-                                <Link href="/"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Home</li></Link>
-                                <Link href="/about"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">About Us</li></Link>
                                 <Link href="/services"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Our Services</li></Link>
                                 <Link href="/portfolio"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Our Portfolio</li></Link>
-                                <Link href="/careers"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Our Careers</li></Link>
+                                <a href="https://careers.pixelkrafts.in" target="_blank" rel="noopener noreferrer"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Our Careers</li></a>
                                 <Link href="/blogs"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Our Blogs</li></Link>
                                 <Link href="/contact"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Contact Us</li></Link>
                             </ul>
