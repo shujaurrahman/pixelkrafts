@@ -98,7 +98,16 @@ export default function BlogsPage() {
                       </div>
                     </div>
                     <div className="relative h-64 md:h-auto rounded-xl overflow-hidden bg-gradient-to-br from-c-purple-1/20 to-c-blue-1/20 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
-                      <div className="text-7xl">📝</div>
+                      {featuredPost.mainImage ? (
+                        <Image 
+                          src={urlFor(featuredPost.mainImage).width(600).height(400).url()} 
+                          alt={featuredPost.title}
+                          fill
+                          className="object-cover"
+                        />
+                      ) : (
+                        <div className="text-7xl">📝</div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -113,8 +122,17 @@ export default function BlogsPage() {
               {regularPosts.map((blog) => (
                 <Link key={blog._id} href={`/blogs/${blog.slug.current}`}>
                   <article className="group h-full bg-c-black-2/50 rounded-xl overflow-hidden border border-c-purple-1/20 hover:border-c-purple-1/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-c-purple-1/10">
-                    <div className="relative h-48 bg-gradient-to-br from-c-purple-1/20 to-c-blue-1/20 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
-                      <div className="text-5xl">📄</div>
+                    <div className="relative h-48 bg-gradient-to-br from-c-purple-1/20 to-c-blue-1/20 flex items-center justify-center overflow-hidden">
+                      {blog.mainImage ? (
+                        <Image 
+                          src={urlFor(blog.mainImage).width(400).height(250).url()} 
+                          alt={blog.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      ) : (
+                        <div className="text-5xl">📄</div>
+                      )}
                     </div>
                     <div className="p-6">
                       <div className="flex flex-wrap gap-2 mb-3">
