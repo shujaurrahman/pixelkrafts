@@ -11,7 +11,7 @@ const MobileMenu = ({ isOpen, setIsOpen }) => {
             <div className="container py-6">
 
                 <div className="flex items-center justify-between mb-12">
-                    <Image width={80} height={70} src="/images/logopk.png" alt="PixelKrafts logo" className="w-16" />
+                    <Image width={100} height={90} src="/images/logopk.png" alt="PixelKrafts logo" className="w-24" />
 
                     <button className="focus:outline-none" onClick={() => setIsOpen(!isOpen)}>
                         <XmarkIcon className="stroke-white w-7 h-7" />
@@ -23,6 +23,7 @@ const MobileMenu = ({ isOpen, setIsOpen }) => {
                     <li><Link href="/about" onClick={() => setIsOpen(false)}>About</Link></li>
                     <li><Link href="/services" onClick={() => setIsOpen(false)}>Services</Link></li>
                     <li><Link href="/portfolio" onClick={() => setIsOpen(false)}>Portfolio</Link></li>
+                    <li><Link href="/catalogue" onClick={() => setIsOpen(false)}>Catalogue</Link></li>
                     <li><Link href="/blogs" onClick={() => setIsOpen(false)}>Blogs</Link></li>
                     <li><Link href="/contact" onClick={() => setIsOpen(false)}>Contact Us</Link></li>
                 </ul>

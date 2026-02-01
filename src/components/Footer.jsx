@@ -76,7 +76,6 @@ const Footer = () => {
                                 <Link href="/catalogue"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Our Catalogue</li></Link>
                                 <a href="https://careers.pixelkrafts.in" target="_blank" rel="noopener noreferrer"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Our Careers</li></a>
                                 <Link href="/blogs"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Our Blogs</li></Link>
-                                <Link href="/contact"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Contact Us</li></Link>
                             </ul>
                         </div>
 

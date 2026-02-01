@@ -24,8 +24,8 @@ const Navbar = () => {
                     <Link href="/about"><li className="cursor-pointer hover:text-c-purple-1 transition-colors">About</li></Link>
                     <Link href="/services"><li className="cursor-pointer hover:text-c-purple-1 transition-colors">Services</li></Link>
                     <Link href="/portfolio"><li className="cursor-pointer hover:text-c-purple-1 transition-colors">Portfolio</li></Link>
+                    <Link href="/catalogue"><li className="cursor-pointer hover:text-c-purple-1 transition-colors">Catalogue</li></Link>
                     <Link href="/blogs"><li className="cursor-pointer hover:text-c-purple-1 transition-colors">Blogs</li></Link>
-                    <Link href="/contact"><li className="cursor-pointer hover:text-c-purple-1 transition-colors">Contact Us</li></Link>
                 </ul>
                 <div className="xl:col-span-2 col-span-3 lg:flex hidden items-center gap-4">
                     <Link href="/contact">
