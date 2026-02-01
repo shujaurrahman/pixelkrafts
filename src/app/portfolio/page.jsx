@@ -41,9 +41,9 @@ const PortfolioCard = ({ title, category, description, mainImage, technologies, 
             <Image 
               width={312} 
               height={200} 
-              src={urlFor(mainImage).width(400).height(250).url()} 
+              src={urlFor(mainImage).url()} 
               alt={`${title} project`} 
-              className="2xl:w-[312px] lg:w-[380px] md:w-[300px] w-full rounded-t-xl object-cover" 
+              className="2xl:w-[312px] lg:w-[380px] md:w-[300px] w-full rounded-t-xl object-contain bg-gradient-to-br from-c-purple-1/5 to-c-blue-1/5" 
             />
           ) : (
             <div className="2xl:w-[312px] lg:w-[380px] md:w-[300px] w-full h-[176px] bg-gradient-to-br from-c-purple-1/20 to-c-blue-1/20 rounded-t-xl flex items-center justify-center">

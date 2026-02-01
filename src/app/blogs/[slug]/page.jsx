@@ -228,11 +228,11 @@ export default function BlogDetailPage() {
 
               {/* Featured Image */}
               {blog.mainImage && (
-                <div className="relative h-64 md:h-96 rounded-2xl overflow-hidden mb-12">
+                <div className="relative h-64 md:h-96 rounded-2xl overflow-hidden mb-12 bg-gradient-to-br from-c-purple-1/10 to-c-blue-1/10">
                   <img
-                    src={urlFor(blog.mainImage).width(1200).height(600).url()}
+                    src={urlFor(blog.mainImage).url()}
                     alt={blog.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                   />
                 </div>
               )}

@@ -100,10 +100,10 @@ export default function BlogsPage() {
                     <div className="relative h-64 md:h-auto rounded-xl overflow-hidden bg-gradient-to-br from-c-purple-1/20 to-c-blue-1/20 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
                       {featuredPost.mainImage ? (
                         <Image 
-                          src={urlFor(featuredPost.mainImage).width(600).height(400).url()} 
+                          src={urlFor(featuredPost.mainImage).url()} 
                           alt={featuredPost.title}
                           fill
-                          className="object-cover"
+                          className="object-contain p-2"
                         />
                       ) : (
                         <div className="text-7xl">📝</div>
@@ -125,10 +125,10 @@ export default function BlogsPage() {
                     <div className="relative h-48 bg-gradient-to-br from-c-purple-1/20 to-c-blue-1/20 flex items-center justify-center overflow-hidden">
                       {blog.mainImage ? (
                         <Image 
-                          src={urlFor(blog.mainImage).width(400).height(250).url()} 
+                          src={urlFor(blog.mainImage).url()} 
                           alt={blog.title}
                           fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"
                         />
                       ) : (
                         <div className="text-5xl">📄</div>
