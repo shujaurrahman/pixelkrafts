@@ -1,6 +1,4 @@
-import { ArrowIcon } from "@/assets/Icons";
 import Image from "next/image";
-import Link from "next/link";
 
 const ChooseUsItem = ({ title, description, icon: Icon }) => {
     return (
@@ -27,10 +25,6 @@ const ChooseUsItem = ({ title, description, icon: Icon }) => {
                 <p className="text-white/80 text-center 2xl:text-sm lg:text-super-xs text-xs font-light lg:leading-6 leading-5 lg:mt-5 mt-4">
                     {description}
                 </p>
-
-                <Link href="/" className="underline underline-offset-4 text-white font-light lg:text-super-xs text-xs mt-5">
-                    Learn More <ArrowIcon className="fill-white inline" />
-                </Link>
             </div>
 
         </div>

@@ -228,12 +228,14 @@ export default function BlogDetailPage() {
 
               {/* Featured Image */}
               {blog.mainImage && (
-                <div className="relative h-64 md:h-96 rounded-2xl overflow-hidden mb-12 bg-gradient-to-br from-c-purple-1/10 to-c-blue-1/10">
+                <div className="relative w-full aspect-video rounded-3xl overflow-hidden mb-12">
                   <img
-                    src={urlFor(blog.mainImage).url()}
+                    src={urlFor(blog.mainImage).width(1200).height(675).url()}
                     alt={blog.title}
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-cover"
                   />
+                  {/* Subtle gradient overlay at bottom */}
+                  <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-c-black-1/30 to-transparent" />
                 </div>
               )}
 

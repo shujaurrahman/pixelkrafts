@@ -32,16 +32,16 @@ export const metadata = {
   },
   icons: {
     icon: [
-      { url: `${process.env.NEXT_PUBLIC_BASE_URL}/images/favicon-16x16.png`, sizes: '16x16', type: 'image/png' },
-      { url: `${process.env.NEXT_PUBLIC_BASE_URL}/images/favicon-32x32.png`, sizes: '32x32', type: 'image/png' },
-      { url: `${process.env.NEXT_PUBLIC_BASE_URL}/images/android-chrome-96x96.png`, sizes: '96x96', type: 'image/png' },
-      { url: `${process.env.NEXT_PUBLIC_BASE_URL}/images/mstile-150x150.png`, sizes: '150x150', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/images/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/images/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/images/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/images/android-chrome-512x512.png', sizes: '512x512', type: 'image/png' },
     ],
-    shortcut: [`${process.env.NEXT_PUBLIC_BASE_URL}/images/favicon-32x32.png`],
-    apple: [
-      { url: `${process.env.NEXT_PUBLIC_BASE_URL}/images/apple-touch-icon.png`, sizes: '180x180', type: 'image/png' },
-    ]
+    shortcut: '/images/favicon-32x32.png',
+    apple: '/images/apple-touch-icon.png',
   },
+  manifest: '/images/site.webmanifest',
 };
 
 

@@ -9,7 +9,13 @@ const TestimonialItem = ({ fullName, position, comment, image }) => {
                 <div className="flex items-center text-white tracking-wide">
                     <div className="flex-1 flex gap-2.5">
 
-                        <Image width={48} height={48} src={image} className="w-12 h-12" alt="" />
+                        {image ? (
+                            <Image width={48} height={48} src={image} className="w-12 h-12 rounded-full object-cover" alt={fullName} />
+                        ) : (
+                            <div className="w-12 h-12 rounded-full bg-c-purple-1/30 flex items-center justify-center text-white font-semibold text-lg">
+                                {fullName?.charAt(0)?.toUpperCase()}
+                            </div>
+                        )}
                         <div className="flex flex-col justify-between">
                             <h5 className="capitalize md:text-base text-super-sm">{fullName}</h5>
                             <p className="text-super-xs font-extralight text-white/8">{position}</p>

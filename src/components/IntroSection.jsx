@@ -31,13 +31,15 @@ const IntroSection = () => {
                 <h3
                     className="mb-3 lg:font-light xl:text-[3.2rem] lg:text-[2.8rem] md:text-4xl text-2xl lg:leading-[4.3rem] md:leading-[3.5rem] leading-[2.3rem] text-transparent bg-clip-text bg-gradient-to-r from-c-purple-2 via-white to-c-purple-3"
                 >
-                    {settings?.introSection?.title || 'Where Pixels Meet Purpose'}
+                    {settings?.introSection?.title}
                 </h3>
-                <p
-                    className="text-white/75 xl:text-base md:text-super-sm text-super-xs tracking-wide max-md:leading-6 font-extralight mb-6"
-                >
-                    {settings?.introSection?.description || 'Loading...'}
-                </p>
+                {settings?.introSection?.description && (
+                    <p
+                        className="text-white/75 xl:text-base md:text-super-sm text-super-xs tracking-wide max-md:leading-6 font-extralight mb-6"
+                    >
+                        {settings.introSection.description}
+                    </p>
+                )}
 
                 {/* Stats */}
                 <div className="flex flex-wrap gap-8 md:gap-12 mt-8">

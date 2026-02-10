@@ -2,7 +2,7 @@ import { ArrowIcon } from "@/assets/Icons";
 import Image from "next/image";
 import Link from "next/link";
 
-const PortfolioCard = ({ title, category, description, image, tags, path }) => {
+const PortfolioCard = ({ title, category, description, image, tags = [], path }) => {
     return (
         <div className="">
             <div
@@ -16,12 +16,20 @@ const PortfolioCard = ({ title, category, description, image, tags, path }) => {
 
                     <h3 className="font-medium 2xl:text-2xl text-2.5xl md:my-4 mt-3.5">{title}</h3>
 
-                    <p className="font-light md:text-base text-super-sm line-clamp-3">{description}</p>
+                    {description && (
+                        <p className="font-light md:text-base text-super-sm line-clamp-3">{description}</p>
+                    )}
 
                 </div>
 
                 <div className="pb-0 mb-0 flex flex-col justify-end">
-                    <Image width={279} height={176} src={image} alt={`${title} web project`} className="2xl:w-[312px] lg:w-[380px] md:w-[300px] w-full" />
+                    {image ? (
+                        <Image width={279} height={176} src={image} alt={`${title} web project`} className="2xl:w-[312px] lg:w-[380px] md:w-[300px] w-full rounded-t-xl object-contain" />
+                    ) : (
+                        <div className="2xl:w-[312px] lg:w-[380px] md:w-[300px] w-full h-[176px] bg-gradient-to-br from-c-purple-1/20 to-c-blue-1/20 rounded-t-xl flex items-center justify-center">
+                            <span className="text-5xl">🚀</span>
+                        </div>
+                    )}
                 </div>
 
                 <Link href={`/portfolio/${path}`}>
@@ -35,16 +43,21 @@ const PortfolioCard = ({ title, category, description, image, tags, path }) => {
 
             </div>
 
-            <p className="mt-4 text-white/85 font-extralight md:leading-7 leading-6 md:text-base text-sm line-clamp-3">{description}</p>
+            {description && (
+                <p className="mt-4 text-white/85 font-extralight md:leading-7 leading-6 md:text-base text-sm line-clamp-3">{description}</p>
+            )}
 
-            <div className="flex flex-wrap gap-2.5 text-white font-light mt-3.5 text-xs tracking-wide">
-                {tags.map((tag, index) => (
-                    <div key={index} className="border border-c-purple-1/80 rounded-full py-1.5 px-4">
-                        {tag}
-                    </div>
-                ))}
+            {tags && tags.length > 0 && (
+                <div className="flex flex-wrap gap-2.5 text-white font-light mt-3.5 text-xs tracking-wide">
+                    {tags.map((tag, index) => (
+                        <div key={index} className="border border-c-purple-1/80 rounded-full py-1.5 px-4">
+                            {tag}
+                        </div>
+                    ))}
+                </div>
+            )}
             </div>
-        </div>
+
     );
 }
 

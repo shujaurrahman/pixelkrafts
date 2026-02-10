@@ -18,7 +18,7 @@ const TestimonialSection = () => {
                         fullName: item.fullName,
                         position: item.position,
                         comment: item.comment,
-                        image: item.image ? urlFor(item.image).width(96).height(96).url() : "/images/profile-1.png"
+                        image: item.image ? urlFor(item.image).width(96).height(96).url() : null
                     }));
                     setTestimonials(transformed);
                 }
@@ -30,6 +30,8 @@ const TestimonialSection = () => {
         }
         fetchTestimonials();
     }, []);
+
+    if (!loading && testimonials.length === 0) return null;
 
     return (
         <SectionLayout

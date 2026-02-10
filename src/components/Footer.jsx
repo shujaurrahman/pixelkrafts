@@ -47,7 +47,7 @@ const Footer = () => {
                         </div>
 
                         <p className="text-white/85 xl:text-super-sm text-sm font-extralight tracking-wide leading-6">
-                            {settings?.description || "Your trusted partner in web development, app development, SEO, and custom AI solutions. Together, we create digital experiences that make a lasting impact."}
+                            {settings?.description}
                         </p>
 
                         {/* MSME Certification Badge */}
@@ -71,11 +71,11 @@ const Footer = () => {
                             <ul
                                 className="text-white/85 text-super-sm font-extralight tracking-wide pl-1 flex flex-col gap-3"
                             >
-                                <Link href="/services"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Our Services</li></Link>
-                                <Link href="/portfolio"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Our Portfolio</li></Link>
-                                <Link href="/catalogue"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Our Catalogue</li></Link>
-                                <a href="https://careers.pixelkrafts.in" target="_blank" rel="noopener noreferrer"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Our Careers</li></a>
-                                <Link href="/blogs"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Our Blogs</li></Link>
+                                <Link href="/services"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Services</li></Link>
+                                <Link href="/portfolio"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Portfolio</li></Link>
+                                <Link href="/catalogue"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Catalogue</li></Link>
+                                <a href="https://careers.pixelkrafts.in" target="_blank" rel="noopener noreferrer"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Careers</li></a>
+                                <Link href="/blogs"><li className="hover:text-c-purple-1 transition-colors cursor-pointer">Blogs</li></Link>
                             </ul>
                         </div>
 
@@ -100,10 +100,10 @@ const Footer = () => {
                             <ul
                                 className="text-white/85 text-super-sm font-extralight tracking-wide pl-1 flex flex-col gap-3"
                             >
-                                <li style={{whiteSpace: 'pre-line'}}>{settings?.address || "Pilibhit 262001\nUttar Pradesh, India"}</li>
-                                <li>{settings?.workingHours || "Mon - Sat: 10:00 AM - 06:00 PM"}</li>
-                                <li>Phone: {settings?.phone || "+91 7579966178"}</li>
-                                <li>Email: {settings?.email || "official@pixelkrafts.in"}</li>
+                                {settings?.address && <li style={{whiteSpace: 'pre-line'}}>{settings.address}</li>}
+                                {settings?.workingHours && <li>{settings.workingHours}</li>}
+                                {settings?.phone && <li>Phone: {settings.phone}</li>}
+                                {settings?.email && <li>Email: {settings.email}</li>}
                             </ul>
 
                         </div>
@@ -117,22 +117,22 @@ const Footer = () => {
                 >
 
                     <div>
-                        <p>@{new Date().getFullYear()} {settings?.copyrightText || `${settings?.companyName || 'PixelKrafts Software Solutions'}. All Rights Reserved.`}</p>
+                        <p>@{new Date().getFullYear()} {settings?.copyrightText || (settings?.companyName ? `${settings.companyName}. All Rights Reserved.` : '')}</p>
                     </div>
 
                     <div className="flex items-center gap-4">
-                        {(socialLinks.instagram || !settings) && (
-                            <a href={socialLinks.instagram || "https://www.instagram.com/pixelkrafts_in/"} target="_blank" rel="noopener noreferrer" className="focus:outline-none hover:scale-110 transition-transform">
+                        {socialLinks.instagram && (
+                            <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="focus:outline-none hover:scale-110 transition-transform">
                                 <InstagramIcon />
                             </a>
                         )}
-                        {(socialLinks.whatsapp || !settings) && (
-                            <a href={`https://wa.me/${socialLinks.whatsapp || "917579966178"}`} target="_blank" rel="noopener noreferrer" className="focus:outline-none hover:scale-110 transition-transform">
+                        {socialLinks.whatsapp && (
+                            <a href={`https://wa.me/${socialLinks.whatsapp}`} target="_blank" rel="noopener noreferrer" className="focus:outline-none hover:scale-110 transition-transform">
                                 <WhatsAppIcon />
                             </a>
                         )}
-                        {(socialLinks.linkedin || !settings) && (
-                            <a href={socialLinks.linkedin || "https://www.linkedin.com/company/pixelkraftssoftwaresolution"} target="_blank" rel="noopener noreferrer" className="focus:outline-none hover:scale-110 transition-transform">
+                        {socialLinks.linkedin && (
+                            <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="focus:outline-none hover:scale-110 transition-transform">
                                 <LinkedInIcon />
                             </a>
                         )}

@@ -25,6 +25,8 @@ const FrequentlyAskedSection = () => {
         fetchFaqs();
     }, []);
 
+    if (!loading && faqs.length === 0) return null;
+
     return (
         <SectionLayout
             icon={<SupportIcon className="fill-c-blue-1 md:w-8 md:h-8 w-7 h-7" />}

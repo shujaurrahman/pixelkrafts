@@ -33,20 +33,22 @@ const LetsWorkSection = () => {
                         <h3
                             className="lg:text-5xl md:text-[2.85rem] text-[2rem] leading-[3.6rem] text-transparent bg-clip-text bg-gradient-to-r from-c-purple-2 from-20% via-white to-c-purple-3 to-80%"
                         >
-                            {settings?.ctaSection?.title || "Let's work with Us"}
+                            {settings?.ctaSection?.title}
                         </h3>
-                        <p
-                            className="text-white/85 font-extralight lg:text-base md:text-super-sm text-sm tracking-wide md:leading-7 leading-6 md:mt-3 mt-1"
-                        >
-                            {settings?.ctaSection?.description || "Ready to bring your ideas to life? Join forces with our expert team and let's create something extraordinary together. Your vision, our expertise – let's make it happen!"}
-                        </p>
+                        {settings?.ctaSection?.description && (
+                            <p
+                                className="text-white/85 font-extralight lg:text-base md:text-super-sm text-sm tracking-wide md:leading-7 leading-6 md:mt-3 mt-1"
+                            >
+                                {settings.ctaSection.description}
+                            </p>
+                        )}
                     </div>
 
                     <Link href="/contact">
                         <button
                             className="bg-white rounded-full text-black md:py-3 py-2 px-7 md:text-base text-sm font-medium hover:bg-c-purple-1 hover:text-white transition-all duration-300"
                         >
-                            {settings?.ctaSection?.buttonText || 'Contact Us'} <ArrowIcon className="md:w-7 md:h-7 w-6 h-6 fill-black inline" />
+                            {settings?.ctaSection?.buttonText || 'Contact Us'}{' '}<ArrowIcon className="md:w-7 md:h-7 w-6 h-6 fill-black inline" />
                         </button>
                     </Link>
                 </div>

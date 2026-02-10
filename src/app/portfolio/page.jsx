@@ -20,34 +20,28 @@ const categories = [
 
 
 
-// Portfolio Card Component matching OurWork UI
-const PortfolioCard = ({ title, category, description, mainImage, technologies, slug }) => {
+// Portfolio Card Component - Dark Theme Design
+const PortfolioCard = ({ title, category, shortDescription, mainImage, overview, slug }) => {
   const categoryLabel = categories.find(c => c.value === category)?.label || category;
+  const technologies = overview?.technologies || [];
   
   return (
-    <div>
-      <div
-        className="bg-gradient-to-r from-[#E6DBFF] via-[#F6F6F6] via-45% to-[#D8D7FF] rounded-3xl md:px-9 px-5
-                   2xl:pt-11 md:pt-14 pt-7 flex md:flex-row flex-col md:gap-4 gap-7 relative overflow-hidden"
-      >
-        <div className="md:pb-11 flex-1">
-          <span className="border border-c-purple-1 md:text-super-xs text-xs rounded-full py-2 px-4">{categoryLabel}</span>
-          <h3 className="font-medium 2xl:text-2xl text-2.5xl md:my-4 mt-3.5">{title}</h3>
-          <p className="font-light md:text-base text-super-sm line-clamp-3">{description}</p>
-        </div>
-
-        <div className="pb-0 mb-0 flex flex-col justify-end">
+    <Link href={slug?.current ? `/portfolio/${slug.current}` : '#'}>
+      <div className="group bg-white/[0.03] rounded-2xl overflow-hidden hover:bg-white/[0.06] transition-all duration-500 cursor-pointer border border-white/10 hover:border-c-purple-1/50 h-full flex flex-col">
+        
+        {/* Image Container */}
+        <div className="relative w-full h-72 bg-gradient-to-br from-c-purple-1/10 to-white/5 overflow-hidden">
           {mainImage ? (
             <Image 
-              width={312} 
-              height={200} 
-              src={urlFor(mainImage).url()} 
+              width={600} 
+              height={400} 
+              src={urlFor(mainImage).width(600).height(400).url()} 
               alt={`${title} project`} 
-              className="2xl:w-[312px] lg:w-[380px] md:w-[300px] w-full rounded-t-xl object-contain bg-gradient-to-br from-c-purple-1/5 to-c-blue-1/5" 
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
             />
           ) : (
-            <div className="2xl:w-[312px] lg:w-[380px] md:w-[300px] w-full h-[176px] bg-gradient-to-br from-c-purple-1/20 to-c-blue-1/20 rounded-t-xl flex items-center justify-center">
-              <span className="text-6xl">
+            <div className="w-full h-full flex items-center justify-center">
+              <span className="text-8xl opacity-30">
                 {category === 'website' && '🌐'}
                 {category === 'app' && '📱'}
                 {category === 'ecommerce' && '🛒'}
@@ -57,28 +51,51 @@ const PortfolioCard = ({ title, category, description, mainImage, technologies, 
               </span>
             </div>
           )}
+          
+          {/* Category Badge */}
+          <div className="absolute top-4 left-4">
+            <span className="bg-c-purple-1/20 backdrop-blur-sm text-c-purple-1 px-4 py-2 rounded-full text-xs font-semibold border border-c-purple-1/30">
+              {categoryLabel}
+            </span>
+          </div>
+          
+          {/* Arrow Icon */}
+          <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:bg-c-purple-1 transition-all duration-300 border border-white/20">
+            <ArrowIcon className="fill-white group-hover:fill-white w-5 h-5 transition-all duration-300 group-hover:rotate-45" />
+          </div>
         </div>
 
-        <Link href={slug?.current ? `/portfolio/${slug.current}` : '#'}>
-          <button
-            className="2xl:w-10 2xl:h-10 md:w-11 md:h-11 w-10 h-10 rounded-full flex items-center justify-center
-                     border border-white bg-white/40 absolute right-7 top-7 hover:bg-white/60 transition-all"
-          >
-            <ArrowIcon className="fill-black 2xl:w-6 2xl:h-6 w-7 h-7" />
-          </button>
-        </Link>
-      </div>
+        {/* Content */}
+        <div className="p-6 flex-1 flex flex-col">
+          <h3 className="font-semibold text-2xl text-white mb-3 group-hover:text-c-purple-1 transition-colors duration-300 line-clamp-2">
+            {title}
+          </h3>
+          
+          <p className="text-white/80 text-sm leading-relaxed mb-4 line-clamp-3 flex-1">
+            {shortDescription}
+          </p>
 
-      <p className="mt-4 text-white/85 font-extralight md:leading-7 leading-6 md:text-base text-sm line-clamp-3">{description}</p>
-
-      <div className="flex flex-wrap gap-2.5 text-white font-light mt-3.5 text-xs tracking-wide">
-        {technologies?.slice(0, 4).map((tag, index) => (
-          <div key={index} className="border border-c-purple-1/80 rounded-full py-1.5 px-4">
-            {tag}
-          </div>
-        ))}
+          {/* Technologies */}
+          {technologies && technologies.length > 0 && (
+            <div className="flex flex-wrap gap-2 pt-4 border-t border-white/10">
+              {technologies.slice(0, 4).map((tag, index) => (
+                <span 
+                  key={index} 
+                  className="text-xs px-3 py-1.5 rounded-full bg-c-purple-1/20 text-c-purple-1 font-medium"
+                >
+                  {tag}
+                </span>
+              ))}
+              {technologies.length > 4 && (
+                <span className="text-xs px-3 py-1.5 rounded-full bg-white/10 text-white/70 font-medium">
+                  +{technologies.length - 4}
+                </span>
+              )}
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
@@ -114,76 +131,83 @@ export default function PortfolioPage() {
         <BlobOverlay />
         
         <div className="relative backdrop-blur-[100px] bg-c-black-1/35">
-          <div className="container py-16">
-            
-            {/* Header matching OurWork style */}
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-12 rounded-full border border-[#ac8ef2]/50 flex items-center justify-center">
-                <GlobalToolsIcon className="stroke-[#ac8ef2] w-7 h-7" />
+          {/* Hero Section */}
+          <div className="container py-20">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-14 h-14 rounded-full bg-c-purple-1/20 flex items-center justify-center">
+                <GlobalToolsIcon className="stroke-c-purple-1 w-8 h-8" />
               </div>
-              <span className="text-white/60 text-sm tracking-wider uppercase">Our Portfolio</span>
+              <span className="text-c-purple-1 text-sm tracking-widest uppercase font-semibold">Our Portfolio</span>
             </div>
 
-            <h1 className="mb-3 font-light xl:text-[2.6rem] md:text-[2.37rem] text-2.5xl lg:leading-[3.6rem] leading-[2.7rem] text-[#e5e5ff]">
+            <h1 className="mb-6 font-bold xl:text-6xl md:text-5xl text-4xl text-white">
               Our Work of <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#ac8ef2] from-35% to-[#ac8ef2]/50">Digital Creations</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-c-purple-1 to-c-purple-1/60">
+                Digital Creations
+              </span>
             </h1>
             
-            <div className="flex lg:flex-row flex-col items-start xl:gap-6 gap-4 mb-12">
-              <p className="text-white/75 xl:text-base md:text-sm text-xs md:leading-6 leading-5 tracking-wide font-extralight flex-1">
-                From concept to completion, our projects reflect the expertise and creativity of our team. Each project is a testament
-                to our commitment to delivering innovative solutions tailored to meet the unique needs of our clients.
-              </p>
-            </div>
+            <p className="text-white/80 text-lg leading-relaxed max-w-3xl mb-12">
+              From concept to completion, our projects reflect the expertise and creativity of our team. 
+              Each project is a testament to our commitment to delivering innovative solutions tailored 
+              to meet the unique needs of our clients.
+            </p>
 
             {/* Filter Tabs */}
-            <div className="flex flex-wrap gap-3 mb-12">
+            <div className="flex flex-wrap gap-3">
               {categories.map((cat) => (
                 <button
                   key={cat.value}
                   onClick={() => setActiveFilter(cat.value)}
-                  className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border ${
+                  className={`px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 ${
                     activeFilter === cat.value
-                      ? 'bg-white text-black border-white'
-                      : 'border-white/20 text-white/75 hover:border-c-purple-1 hover:text-white'
+                      ? 'bg-c-purple-1 text-white shadow-lg shadow-c-purple-1/30 scale-105'
+                      : 'bg-white/5 text-white/70 border border-white/10 hover:border-c-purple-1 hover:text-c-purple-1'
                   }`}
                 >
                   {cat.label}
                 </button>
               ))}
             </div>
+          </div>
 
-            {/* Portfolio Grid - matching OurWork UI */}
+          {/* Portfolio Grid Section */}
+          <div className="container pb-20">
             {loading ? (
-              <div className="flex items-center justify-center py-20">
-                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-c-purple-1"></div>
+              <div className="flex items-center justify-center py-32">
+                <div className="relative">
+                  <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-c-purple-1"></div>
+                  <div className="absolute inset-0 animate-ping rounded-full border-2 border-c-purple-1 opacity-20"></div>
+                </div>
+              </div>
+            ) : filteredProjects.length === 0 ? (
+              <div className="text-center py-32">
+                <div className="text-8xl mb-6 opacity-20">📂</div>
+                <h3 className="text-2xl font-semibold text-white mb-2">No Projects Found</h3>
+                <p className="text-white/60">No projects found in this category. Check back soon!</p>
               </div>
             ) : (
-              <div className="grid 2xl:grid-cols-2 gap-x-10 2xl:gap-y-12 gap-16">
+              <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
                 {filteredProjects.map((project) => (
                   <PortfolioCard key={project._id} {...project} />
                 ))}
-              </div>
-            )}
-
-            {filteredProjects.length === 0 && !loading && (
-              <div className="text-center py-20">
-                <p className="text-white/60 text-lg">No projects found in this category.</p>
               </div>
             )}
           </div>
 
           {/* CTA Section */}
           <div className="container pb-20">
-            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-c-purple-1/20 to-c-blue-1/20 p-12 text-center border border-c-purple-1/20">
+            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-c-purple-1 to-c-purple-1/80 p-16 text-center shadow-2xl">
+              <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
               <div className="relative z-10">
-                <h2 className="text-4xl font-bold text-white mb-4">Have a Project in Mind?</h2>
-                <p className="text-white/75 mb-8 max-w-2xl mx-auto">
-                  Let&apos;s create something amazing together. Share your vision with us and let&apos;s make it reality.
+                <h2 className="text-5xl font-bold text-white mb-6">Have a Project in Mind?</h2>
+                <p className="text-white/90 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
+                  Let&apos;s create something amazing together. Share your vision with us and let&apos;s bring it to life.
                 </p>
                 <Link href="/contact">
-                  <button className="px-8 py-4 bg-gradient-to-r from-c-purple-1 to-c-blue-1 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-c-purple-1/50 transition-all duration-300 hover:scale-105">
+                  <button className="px-10 py-5 bg-white text-c-purple-1 rounded-full font-bold text-lg hover:shadow-2xl hover:shadow-white/30 transition-all duration-300 hover:scale-105 inline-flex items-center gap-3 group">
                     Start Your Project
+                    <CircleArrowIcon className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </Link>
               </div>

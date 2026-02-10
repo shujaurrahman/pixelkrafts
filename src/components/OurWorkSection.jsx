@@ -17,14 +17,15 @@ const OurWorkSection = () => {
                 if (data && data.length > 0) {
                     // Transform Sanity data to match card format
                     const transformed = data.map(item => ({
-                        category: item.category === 'website' ? 'Website Development' : 
+                        category: item.category === 'website' ? 'Websites' : 
                                   item.category === 'ecommerce' ? 'E-Commerce' :
-                                  item.category === 'app' ? 'App Development' :
+                                  item.category === 'app' ? 'Mobile Apps' :
                                   item.category === 'fullstack' ? 'Full Stack' :
-                                  item.category === 'ai' ? 'AI Solution' : 'Development Project',
+                                  item.category === 'ai' ? 'AI Solutions' : 
+                                  item.category === 'design' ? 'UI/UX Design' : 'Development',
                         title: item.title,
-                        description: item.description,
-                        image: item.mainImage ? urlFor(item.mainImage).width(400).height(250).url() : "/images/project1.png",
+                        description: item.shortDescription || '',
+                        image: item.mainImage ? urlFor(item.mainImage).width(400).height(250).url() : null,
                         tags: item.technologies || [],
                         path: item.slug?.current || item._id
                     }));
@@ -41,6 +42,8 @@ const OurWorkSection = () => {
 
     const displayItems = portfolioItems;
 
+    if (!loading && displayItems.length === 0) return null;
+
     return (
         <SectionLayout
             icon={<GlobalToolsIcon className="stroke-[#ac8ef2] md:w-8 md:h-8 w-7 h-7" />}
@@ -53,16 +56,15 @@ const OurWorkSection = () => {
                     <h3
                         className="mb-3 font-light xl:text-[2.6rem] md:text-[2.37rem] text-2.5xl lg:leading-[3.6rem] leading-[2.7rem] text-[#e5e5ff]"
                     >
-                        Our Work of <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#ac8ef2] from-35% to-[#ac8ef2]/50">Digital Creations</span>
+                       Our Digital Creations
+ <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#ac8ef2] from-35% to-[#ac8ef2]/50"> & Project Portfolio</span>
                     </h3>
                     <div className="flex lg:flex-row flex-col items-start xl:gap-6 gap-4">
                         <p
                             className="text-white/75 xl:text-base md:text-sm text-xs md:leading-6 leading-5 tracking-wide font-extralight flex-1"
                         >
-                            From concept to completion, our projects reflect the expertise and creativity of our team. Each project is a testament
-                            to our commitment to delivering innovative solutions tailored to meet the unique needs of our clients.
-                        </p>
+From strategy and concept through design and deployment, our digital projects highlight the expertise, innovation, and technical excellence of our team. Each project is carefully crafted to deliver tailored digital solutions that align with our clients’ business objectives, enhance user experience, and drive measurable results.                        </p>
                         <Link href="/portfolio">
                             <button
                                 className="focus:outline-none bg-white text-black rounded-full font-medium px-6 xl:py-3 md:py-2.5 py-2 md:text-super-sm text-super-xs"

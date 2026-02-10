@@ -37,6 +37,8 @@ const ChooseSection = () => {
         fetchData();
     }, []);
 
+    if (!loading && items.length === 0) return null;
+
     return (
 
         <SectionLayout

@@ -41,22 +41,28 @@ const HeaderHero = () => {
 
                     <HeroSocial />
                     
-                    <p className="text-center text-white/60 text-sm md:text-base tracking-widest uppercase md:mt-4 mt-2">
-                        {settings?.heroSection?.tagline || 'Create. Craft. Conquer.'}
-                    </p>
+                    {settings?.heroSection?.tagline && (
+                        <p className="text-center text-white/60 text-sm md:text-base tracking-widest uppercase md:mt-4 mt-2">
+                            {settings.heroSection.tagline}
+                        </p>
+                    )}
 
-                    <h2
-                        className="md:mt-4 mt-3 leading-[1.1] text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] 
-                        text-center text-transparent bg-clip-text bg-gradient-to-r from-c-purple-2 from-20% via-white to-c-purple-3 to-80%"
-                    >
-                        {settings?.heroSection?.headline || 'Amazing Website Creation'}
-                    </h2>
+                    {settings?.heroSection?.headline && (
+                        <h2
+                            className="md:mt-4 mt-3 leading-[1.1] text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] 
+                            text-center text-transparent bg-clip-text bg-gradient-to-r from-c-purple-2 from-20% via-white to-c-purple-3 to-80%"
+                        >
+                            {settings.heroSection.headline}
+                        </h2>
+                    )}
 
-                    <p
-                        className="text-center lg:text-xl md:text-lg text-base leading-7 text-white/85 md:mt-8 mt-5 md:font-light font-extralight tracking-wide max-w-3xl mx-auto"
-                    >
-                        {settings?.heroSection?.subheadline || 'Turn your ideas into digital reality. We help you build modern, user-friendly websites with clean design that drives growth.'}
-                    </p>
+                    {settings?.heroSection?.subheadline && (
+                        <p
+                            className="text-center lg:text-xl md:text-lg text-base leading-7 text-white/85 md:mt-8 mt-5 md:font-light font-extralight tracking-wide max-w-3xl mx-auto"
+                        >
+                            {settings.heroSection.subheadline}
+                        </p>
+                    )}
 
                     <Link href="/contact">
                         <button

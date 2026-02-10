@@ -7,6 +7,7 @@ const SectionLayout = ({ icon: Icon, lineStyles, duration, children }) => {
 
     useEffect(() => {
         const handleScroll = () => {
+            if (!sectionRef.current) return;
             const currentScrollY = window.scrollY;
             const sectionTop = sectionRef.current.getBoundingClientRect().top + window.scrollY - offset;
             const sectionBottom = sectionTop + sectionRef.current.offsetHeight + offset;

@@ -9,5 +9,6 @@ import siteSettings from './siteSettings'
 import aboutPage from './aboutPage'
 import founder from './founder'
 import process from './process'
+import legalPage from './legalPage'
 
-export const schemaTypes = [blog, contact, portfolio, service, testimonial, faq, chooseUs, siteSettings, aboutPage, founder, process]
+export const schemaTypes = [blog, contact, portfolio, service, testimonial, faq, chooseUs, siteSettings, aboutPage, founder, process, legalPage]
