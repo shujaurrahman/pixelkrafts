@@ -1,5 +1,5 @@
 "use client";
-import { InstagramIcon, LinkedInIcon, TwitterIcon, WhatsAppIcon, GithubIcon } from "@/assets/Icons";
+import { InstagramIcon, LinkedInIcon, WhatsAppIcon } from "@/assets/Icons";
 import { useState, useEffect } from "react";
 import { getSiteSettings } from "../../lib/sanity.client";
 
@@ -31,16 +31,6 @@ const HeroSocial = () => {
             {socialLinks?.linkedin && (
                 <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="focus:outline-none hover:opacity-80 transition-opacity">
                     <LinkedInIcon className="max-md:w-5 h-5" />
-                </a>
-            )}
-            {socialLinks?.twitter && (
-                <a href={socialLinks.twitter} target="_blank" rel="noopener noreferrer" className="focus:outline-none hover:opacity-80 transition-opacity">
-                    <TwitterIcon className="max-md:w-5 h-5" />
-                </a>
-            )}
-            {socialLinks?.github && (
-                <a href={socialLinks.github} target="_blank" rel="noopener noreferrer" className="focus:outline-none hover:opacity-80 transition-opacity">
-                    <GithubIcon className="max-md:w-5 h-5" />
                 </a>
             )}
         </div>
