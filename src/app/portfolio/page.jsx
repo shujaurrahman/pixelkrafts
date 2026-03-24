@@ -33,11 +33,11 @@ const PortfolioCard = ({ title, category, shortDescription, mainImage, overview,
         <div className="relative w-full h-72 bg-gradient-to-br from-c-purple-1/10 to-white/5 overflow-hidden">
           {mainImage ? (
             <Image 
-              width={600} 
-              height={400} 
-              src={urlFor(mainImage).width(600).height(400).url()} 
+              fill
+              sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+              src={urlFor(mainImage).width(1200).url()} 
               alt={`${title} project`} 
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+              className="object-contain group-hover:scale-105 transition-transform duration-700" 
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center">

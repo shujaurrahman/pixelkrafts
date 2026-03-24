@@ -40,7 +40,7 @@ const OurWorkSection = () => {
         fetchPortfolio();
     }, []);
 
-    const displayItems = portfolioItems;
+    const displayItems = portfolioItems.slice(0, 4);
 
     if (!loading && displayItems.length === 0) return null;
 

@@ -31,14 +31,14 @@ function ImageCarousel({ images }) {
 
     return (
         <div className="relative group">
-            {/* Main image — object-contain so nothing gets cropped */}
+            {/* Main image */}
             <div className="relative w-full rounded-2xl overflow-hidden bg-white/[0.03] border border-white/10">
                 <div className="relative w-full" style={{ paddingTop: "56.25%" }}>
                     <Image
                         src={urlFor(images[cur]).width(1400).height(788).url()}
                         fill
                         alt={`Project screenshot ${cur + 1}`}
-                        className="object-contain"
+                        className="object-cover"
                         priority={cur === 0}
                     />
                 </div>

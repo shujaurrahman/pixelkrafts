@@ -24,7 +24,7 @@ const PortfolioCard = ({ title, category, description, image, tags = [], path })
 
                 <div className="pb-0 mb-0 flex flex-col justify-end">
                     {image ? (
-                        <Image width={279} height={176} src={image} alt={`${title} web project`} className="2xl:w-[312px] lg:w-[380px] md:w-[300px] w-full rounded-t-xl object-contain" />
+                        <Image width={279} height={176} src={image} alt={`${title} web project`} className="2xl:w-[312px] lg:w-[380px] md:w-[300px] w-full h-[176px] rounded-t-xl object-cover" />
                     ) : (
                         <div className="2xl:w-[312px] lg:w-[380px] md:w-[300px] w-full h-[176px] bg-gradient-to-br from-c-purple-1/20 to-c-blue-1/20 rounded-t-xl flex items-center justify-center">
                             <span className="text-5xl">🚀</span>
