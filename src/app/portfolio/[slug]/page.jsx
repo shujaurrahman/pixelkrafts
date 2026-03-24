@@ -35,10 +35,10 @@ function ImageCarousel({ images }) {
             <div className="relative w-full rounded-2xl overflow-hidden bg-white/[0.03] border border-white/10">
                 <div className="relative w-full" style={{ paddingTop: "56.25%" }}>
                     <Image
-                        src={urlFor(images[cur]).width(1400).height(788).url()}
+                        src={urlFor(images[cur]).width(1400).fit("max").url()}
                         fill
                         alt={`Project screenshot ${cur + 1}`}
-                        className="object-cover"
+                        className="object-contain"
                         priority={cur === 0}
                     />
                 </div>
@@ -71,7 +71,7 @@ function ImageCarousel({ images }) {
                                     ? "border-c-purple-1 shadow-lg shadow-c-purple-1/20"
                                     : "border-white/10 opacity-40 hover:opacity-80 hover:border-white/30"
                             }`}>
-                            <Image src={urlFor(img).width(120).height(80).url()} width={120} height={80} alt={`Thumb ${i + 1}`} className="w-full h-full object-cover" />
+                            <Image src={urlFor(img).width(120).fit("max").url()} width={120} height={80} alt={`Thumb ${i + 1}`} className="w-full h-full object-contain" />
                         </button>
                     ))}
                 </div>
